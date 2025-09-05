@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.es.examen.crud_ec.dto.RequestUserDTO;
+import com.es.examen.crud_ec.dto.ResponseUserDTO;
 import com.es.examen.crud_ec.service.UserServiceImpl;
 
 @RestController
@@ -23,13 +24,13 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<RequestUserDTO> save(@RequestBody RequestUserDTO userDTO) {
-        RequestUserDTO saved = userService.saveUser(userDTO);
+    public ResponseEntity<ResponseUserDTO> save(@RequestBody RequestUserDTO userDTO) {
+        ResponseUserDTO saved = userService.saveUser(userDTO);
         return ResponseEntity.ok(saved);        
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RequestUserDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<ResponseUserDTO> findById(@PathVariable Long id) {
         return userService.getById(id).map(
             ResponseEntity::ok
         ).orElseGet(() -> ResponseEntity.notFound().build());
@@ -43,7 +44,7 @@ public class UserController {
     }
     
     @PutMapping
-    public ResponseEntity<RequestUserDTO> update(@RequestBody RequestUserDTO userDTO) {
+    public ResponseEntity<ResponseUserDTO> update(@RequestBody RequestUserDTO userDTO) {
         return userService.updateUser(userDTO).map(
             ResponseEntity::ok
         ).orElseGet(() -> ResponseEntity.notFound().build());

@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.es.examen.crud_ec.dto.RequestUserDTO;
+import com.es.examen.crud_ec.dto.ResponseUserDTO;
 import com.es.examen.crud_ec.entity.User;
 import com.es.examen.crud_ec.repository.UserRepository;
 
@@ -18,26 +19,26 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
 
     @Override
-    public RequestUserDTO saveUser(RequestUserDTO userDTO) {
+    public ResponseUserDTO saveUser(RequestUserDTO userDTO) {
         User userEntity = modelMapper.map(userDTO, User.class);
-        return modelMapper.map(userRepository.save(userEntity), RequestUserDTO.class);
+        return modelMapper.map(userRepository.save(userEntity), ResponseUserDTO.class);
     }
 
     @Override
-    public Optional<RequestUserDTO> getById(Long id) {
+    public Optional<ResponseUserDTO> getById(Long id) {
         return userRepository.findById(id).map(
             user -> {
-                return modelMapper.map(user, RequestUserDTO.class);
+                return modelMapper.map(user, ResponseUserDTO.class);
             }
         );
     }
 
     @Override
-    public Optional<RequestUserDTO> updateUser(RequestUserDTO userDTO) {
+    public Optional<ResponseUserDTO> updateUser(RequestUserDTO userDTO) {
         User user = modelMapper.map(userDTO, User.class);
         return userRepository.findById(userDTO.getId()).map(
             userDB -> {
-                return modelMapper.map(userRepository.save(user), RequestUserDTO.class);
+                return modelMapper.map(userRepository.save(user), ResponseUserDTO.class);
             }
         );
     }
