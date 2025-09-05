@@ -1,0 +1,123 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+##############################
+# Java & Spring Boot
+##############################
+
+# Directorios de compilación
+/target/
+/out/
+/build/
+
+# Archivos compilados
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+
+##############################
+# IDEs
+##############################
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# VSCode
+.vscode/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+##############################
+# Sistema Operativo
+##############################
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+##############################
+# Configuración sensible
+##############################
+
+# Variables de entorno
+.env
+.env.*
+
+# Configuración real de Spring Boot
+application.properties
+application.yml
+
+# Puedes dejar un ejemplo sin credenciales
+application-example.properties
+application-example.yml
+
+##############################
+# Oracle
+##############################
+
+# Dumps y exportaciones
+*.dmp
+*.log
+*.sql
+
+##############################
+# Otros
+##############################
+
+# Archivos temporales
+*.tmp
+*.swp
+*.bak
+
+# Cobertura de tests
+/coverage/
+/jacoco-report/
+
+# Maven Wrapper (permitir properties y scripts, ignorar el jar)
+!.mvn/wrapper/maven-wrapper.properties
+!.mvn/wrapper/maven-wrapperDownloader.java
+.mvn/wrapper/maven-wrapper.jar
