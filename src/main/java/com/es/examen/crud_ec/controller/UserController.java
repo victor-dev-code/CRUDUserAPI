@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.es.examen.crud_ec.dto.RequestUserDTO;
@@ -58,5 +59,12 @@ public class UserController {
         if (usersDTO.isEmpty()) 
             return ResponseEntity.noContent().build();
         return ResponseEntity.ok(usersDTO);
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<ResponseUserDTO> findByName(@RequestParam String username) {
+        return userService.findByName(username).map(
+            ResponseEntity::ok
+        ).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

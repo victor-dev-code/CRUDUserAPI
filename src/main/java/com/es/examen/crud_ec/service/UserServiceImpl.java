@@ -74,5 +74,16 @@ public class UserServiceImpl implements UserService {
         ).collect(Collectors.toList());
     }
 
+    @Override
+    public Optional<ResponseUserDTO> findByName(String username) {
+        log.info("Buscando el usuario {}", username);
+        return userRepository.findByUsername(username).map(
+            user -> {
+                log.info("Se ha encontrado el usuario solicitado {}", username);
+                return modelMapper.map(user, ResponseUserDTO.class);
+            }
+        );
+    }
+
     
 }

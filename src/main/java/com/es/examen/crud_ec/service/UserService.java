@@ -10,6 +10,7 @@ public interface UserService {
     ResponseUserDTO saveUser(RequestUserDTO userDTO);
     Optional<ResponseUserDTO> getById(Long id);
     List<ResponseUserDTO> getAllUsers();
+    Optional<ResponseUserDTO> findByName(String username);
     Optional<ResponseUserDTO> updateUser(RequestUserDTO userDTO);
     Boolean deleteById(Long id);    
 }
