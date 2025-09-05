@@ -1,6 +1,8 @@
 package com.es.examen.crud_ec.service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -61,6 +63,15 @@ public class UserServiceImpl implements UserService {
                 return true;
             }
         ).orElse(false);
+    }
+
+    @Override
+    public List<ResponseUserDTO> getAllUsers() {
+        return userRepository.findAll().stream().map(
+            usuario -> {
+                return modelMapper.map(usuario, ResponseUserDTO.class);
+            }
+        ).collect(Collectors.toList());
     }
 
     

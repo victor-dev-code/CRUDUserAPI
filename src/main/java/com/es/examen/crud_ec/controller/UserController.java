@@ -1,5 +1,7 @@
 package com.es.examen.crud_ec.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,5 +50,13 @@ public class UserController {
         return userService.updateUser(userDTO).map(
             ResponseEntity::ok
         ).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ResponseUserDTO>> getAllUsers() {
+        List<ResponseUserDTO> usersDTO = userService.getAllUsers();
+        if (usersDTO.isEmpty()) 
+            return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(usersDTO);
     }
 }
